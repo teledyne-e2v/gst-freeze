@@ -7,6 +7,18 @@ A Gstreamer plugin to freeze the displayed image. Used in camera_gui application
 
 This plugin allows to freeze the video stream according a parameter in the gstreamer pipeline or by a manual user entry
 
+# Dependencies
+
+The following libraries are required for this plugin.
+- libgstreamer1.0-dev
+- libgstreamer-plugins-base1.0-dev
+
+Install them with: 
+
+```
+sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+```
+
 # Compilation
 
 First you must make sure that your device's clock is correctly setup.
