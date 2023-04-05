@@ -17,15 +17,15 @@ In the FreezePlugin folder do:
     - make
 
 # Install
-'''
+```
 sudo make install
-'''
+```
 
 To test if the plugin has been correctly install, do:
-'''
+```
 export GST_PLUGIN_PATH=/usr/local/lib/gstreamer-1.0/
 gst-inspect-1.0 freeze
-'''
+```
 
 If the plugin failed to install the following message will be displayed: "No such element or plugin 'freeze'"
 
@@ -37,21 +37,21 @@ sudo rm /usr/local/lib/gstreamer-1.0/libgstfreeze.*
 
 By default the plugin is installed in /usr/local/lib/gstreamer-1.0. 
 It is then required to tell gstreamer where to find it with the command:
-'''
+```
 export GST_PLUGIN_PATH=/usr/local/lib/gstreamer-1.0/
-'''
+```
 The plugin can be used in any gstreamer pipeline by adding '''freeze''', the name of the plugin.
 
 # Pipeline examples:
 With fake image pipeline:
-'''
+```
 gst-launch-1.0 videotestsrc ! freeze ! videoconvert ! ximagesink
-'''
+```
 
 With simple video stream:
-'''
+```
 gst-launch-1.0 v4l2src ! freeze ! queue ! videoconvert ! queue ! xvimagesink sync=false
-'''
+```
 
 By default, the plugin listen for user inputs in the terminal. You can freeze and unfreeze the video stream by entering '''f''' in the terminal.
 
