@@ -12,10 +12,14 @@ This plugin allows to freeze the video stream according a parameter in the gstre
 First you must make sure that your device's clock is correctly setup.
 Otherwise the compilation will fail.
 
-In the FreezePlugin folder do:
-    - bash autogen.sh
-    - make
-
+In the **gst-freeze** folder do:
+```
+bash autogen.sh
+```
+Then:
+```
+make
+```
 # Install
 ```
 sudo make install
