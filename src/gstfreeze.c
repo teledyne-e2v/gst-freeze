@@ -67,6 +67,9 @@
 
 #include "gstfreeze.h"
 
+void *freezeHandler(void *freeze);
+
+
 GST_DEBUG_CATEGORY_STATIC(gst_freeze_debug);
 #define GST_CAT_DEFAULT gst_freeze_debug
 
@@ -183,6 +186,8 @@ gst_freeze_class_init(GstfreezeClass *klass)
 static void
 gst_freeze_init(Gstfreeze *freeze)
 {
+    pthread_t thread;
+    int rc;
     freeze->sinkpad = gst_pad_new_from_static_template(&sink_factory, "sink");
     gst_pad_set_chain_function(freeze->sinkpad,
                                GST_DEBUG_FUNCPTR(gst_freeze_chain));
@@ -197,9 +202,9 @@ gst_freeze_init(Gstfreeze *freeze)
     freeze->freeze = FALSE;
     freeze->listen = TRUE;
 
-    pthread_t thread;
 
-    int rc;
+
+
     if ((rc = pthread_create(&thread, NULL, freezeHandler, (void *)freeze)))
     {
         g_printerr("Error: Unable to create a thread, %d", rc);
