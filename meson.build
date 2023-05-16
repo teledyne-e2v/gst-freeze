@@ -1,6 +1,6 @@
 project('gst-plugins-good', 'c',
   version : '1.14.2',
-  meson_version : '>= 0.49',
+  meson_version : '>= 0.43',
   default_options : [ 'warning_level=1',
                       'buildtype=debugoptimized' ])
 
@@ -57,10 +57,6 @@ if cc.get_id() == 'msvc'
   noseh_link_args = ['/SAFESEH:NO']
 else
   noseh_link_args = []
-endif
-
-if cc.has_link_argument('-Wl,-Bsymbolic-functions')
-  add_project_link_arguments('-Wl,-Bsymbolic-functions', language : 'c')
 endif
 
 # Symbol visibility
