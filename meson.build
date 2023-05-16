@@ -1,10 +1,10 @@
-project('gst-plugins-good', 'c',
-  version : '1.14.2',
+project('gst-freeze', 'c',
+  version : '1.0.0',
   meson_version : '>= 0.43',
   default_options : [ 'warning_level=1',
                       'buildtype=debugoptimized' ])
 
-gst_version = meson.project_version()
+gst_version = '1.14.2'
 version_arr = gst_version.split('.')
 gst_version_major = version_arr[0].to_int()
 gst_version_minor = version_arr[1].to_int()
@@ -231,6 +231,15 @@ gstfreeze = library('gstfreeze',
   install : true,
   install_dir : plugins_install_dir,
 )
+conf_data = configuration_data()
+conf_data.set('package_version', meson.project_version())
+conf_data.set('package_name', meson.project_name())
+conf_data.set('package', meson.project_name())
+conf_data.set('package_string', meson.project_name() + meson.project_version())
+conf_data.set('tar_name', meson.project_name())
+configure_file(input : 'config.h.in',
+               output : 'config.h',
+               configuration : conf_data)
 
 
 
